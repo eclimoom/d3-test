@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../d3/d3.v3.js"></script>
+</head>
+<body>
+
+
+<script>
+    var spaceCircles = [30, 70, 110];
+    var svgContainer = d3.select("body").append("svg")
+        .attr("width", 200)
+        .attr("height", 200);
+    var rect = svgContainer.selectAll("rect")
+        .data(spaceCircles)
+        .enter()
+        .append("rect");
+
+    var colors = d3.scale.category20();
+
+    console.log(rect);
+
+    var circleAttributes = rect.attr("x",
+        function (d) {
+            return d.x;
+        }).attr("y", function (d) {
+            return d.y;
+        }).attr("width", 80)
+        .attr("height", 34)
+        .attr("rx", 8)
+        .style("fill", function (d,i) {
+            return colors(i);
+        });
+</script>
+</body>
+</html>
